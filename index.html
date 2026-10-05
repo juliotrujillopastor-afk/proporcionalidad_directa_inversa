@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha Interactiva: Proporcionalidad Directa e Inversa</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            directa: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+            },
+            inversa: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              500: '#9333ea',
+              600: '#7e22ce',
+              700: '#6b21a8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 0;
+    }
+    .accordion-content.open {
+      max-height: 1200px;
+      opacity: 1;
+    }
+    .custom-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen pb-16">
+
+  <!-- Header / Fixed Score Bar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="p-2 bg-indigo-600 text-white rounded-xl shadow-md">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg md:text-xl font-extrabold text-slate-900 leading-tight">Matemáticas Secundarias</h1>
+          <p class="text-xs text-slate-500 font-medium">Ficha Interactiva: Proporcionalidad Directa e Inversa</p>
+        </div>
+      </div>
+
+      <!-- Live Score Badge -->
+      <div class="flex items-center space-x-4 bg-slate-100 rounded-2xl p-1.5 px-3 border border-slate-200">
+        <div class="text-right">
+          <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Puntuación</div>
+          <div class="text-base font-black text-indigo-600" id="live-score-text">0 / 24 pts (0%)</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center font-bold text-sm text-indigo-600 shadow-inner border border-slate-200" id="score-circle">
+          0%
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pt-8 space-y-10">
+
+    <!-- Hero Title & Context -->
+    <div class="text-center space-y-3">
+      <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Aprende y Practica</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Proporcionalidad Directa e Inversa</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base">
+        Repasa la teoría clave, clasifica situaciones cotidianas, completa tablas de valores y resuelve problemas paso a paso comprobando tus respuestas.
+      </p>
+    </div>
+
+    <!-- Theoretical Summary Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Card Directa -->
+      <div class="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-200 rounded-2xl p-6 custom-shadow relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-sky-500/10 rounded-bl-full pointer-events-none"></div>
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+            ↑↑
+          </div>
+          <h3 class="text-xl font-bold text-sky-900">Proporcionalidad Directa</h3>
+        </div>
+        <p class="text-slate-700 text-sm leading-relaxed mb-4">
+          Dos magnitudes son <strong>directamente proporcionales</strong> si al aumentar una (al doble, triple...), la otra aumenta en la misma proporción (al doble, triple...). Si una disminuye, la otra disminuye igual.
+        </p>
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-sky-100 space-y-2 text-xs md:text-sm">
+          <div class="flex justify-between items-center border-b border-sky-100 pb-2">
+            <span class="text-slate-600 font-medium">Fórmula constante ($k$):</span>
+            <span class="font-mono font-bold text-sky-700 text-base">k = y / x</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600 font-medium">Regla de 3 Directa:</span>
+            <span class="font-mono font-bold text-sky-700 text-base">x = (b · c) / a</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Inversa -->
+      <div class="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-2xl p-6 custom-shadow relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full pointer-events-none"></div>
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+            ↑↓
+          </div>
+          <h3 class="text-xl font-bold text-purple-900">Proporcionalidad Inversa</h3>
+        </div>
+        <p class="text-slate-700 text-sm leading-relaxed mb-4">
+          Dos magnitudes son <strong>inversamente proporcionales</strong> si al aumentar una (al doble, triple...), la otra disminuye en la misma proporción (a la mitad, tercio...). Su producto permanece constante.
+        </p>
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-purple-100 space-y-2 text-xs md:text-sm">
+          <div class="flex justify-between items-center border-b border-purple-100 pb-2">
+            <span class="text-slate-600 font-medium">Fórmula constante ($k$):</span>
+            <span class="font-mono font-bold text-purple-700 text-base">k = x · y</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600 font-medium">Regla de 3 Inversa:</span>
+            <span class="font-mono font-bold text-purple-700 text-base">x = (a · b) / c</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 1: Clasificación de Magnitudes -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 custom-shadow space-y-6">
+      <div class="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-widest">Bloque 1</span>
+          <h3 class="text-2xl font-bold text-slate-900">Clasificación de Magnitudes</h3>
+          <p class="text-slate-500 text-sm">Indica qué tipo de relación existe entre las dos magnitudes descritas en cada situación.</p>
+        </div>
+        <span class="bg-indigo-50 text-indigo-700 font-bold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">6 Puntos</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="section-1-container">
+        <!-- Question 1 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q1-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">1. Número de obreros y tiempo (días) para construir un muro idéntico.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(1, 'directa')" class="opt-btn-1 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(1, 'inversa')" class="opt-btn-1 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(1, 'no')" class="opt-btn-1 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q1" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q2-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">2. Peso de patatas compradas (kg) y el importe total a pagar (€).</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(2, 'directa')" class="opt-btn-2 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(2, 'inversa')" class="opt-btn-2 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(2, 'no')" class="opt-btn-2 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q2" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q3-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">3. Velocidad media de un vehículo y tiempo empleado en recorrer 200 km.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(3, 'directa')" class="opt-btn-3 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(3, 'inversa')" class="opt-btn-3 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(3, 'no')" class="opt-btn-3 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q3" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q4-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">4. Edad de un estudiante (años) y su estatura en centímetros.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(4, 'directa')" class="opt-btn-4 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(4, 'inversa')" class="opt-btn-4 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(4, 'no')" class="opt-btn-4 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q4" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q5-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">5. Número de fotocopias idénticas e importe cobrado por la imprenta.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(5, 'directa')" class="opt-btn-5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(5, 'inversa')" class="opt-btn-5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(5, 'no')" class="opt-btn-5 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q5" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3 flex flex-col justify-between" id="q6-card">
+          <div>
+            <p class="font-semibold text-slate-800 text-sm md:text-base">6. Número de grifos iguales abiertos y tiempo en llenar un depósito.</p>
+          </div>
+          <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectOption(6, 'directa')" class="opt-btn-6 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="directa">Directa</button>
+              <button onclick="selectOption(6, 'inversa')" class="opt-btn-6 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="inversa">Inversa</button>
+              <button onclick="selectOption(6, 'no')" class="opt-btn-6 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition" data-val="no">No Prop.</button>
+            </div>
+            <div id="feedback-q6" class="hidden text-xs p-2.5 rounded-lg font-medium"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-right pt-2">
+        <button onclick="checkSection1()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2 ml-auto">
+          <span>Comprobar Sección 1</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Completar Tablas -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 custom-shadow space-y-8">
+      <div class="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-widest">Bloque 2</span>
+          <h3 class="text-2xl font-bold text-slate-900">Completar Tablas de Proporcionalidad</h3>
+          <p class="text-slate-500 text-sm">Calcula los valores faltantes en las casillas vacías de cada tabla.</p>
+        </div>
+        <span class="bg-indigo-50 text-indigo-700 font-bold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">8 Puntos</span>
+      </div>
+
+      <!-- Tabla 1: Directa -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <h4 class="font-bold text-slate-800 flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-sky-500 inline-block"></span>
+            <span>Tabla A: Harina vs Panes (Proporcionalidad Directa)</span>
+          </h4>
+          <span id="k-badge-1" class="text-xs font-mono font-semibold bg-sky-50 text-sky-700 border border-sky-200 px-3 py-1 rounded-full">Constante k = ?</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-center border-collapse min-w-[500px]">
+            <thead>
+              <tr class="bg-sky-100/70 text-sky-900 text-sm">
+                <th class="p-3 border border-sky-200 font-bold rounded-tl-xl">Harina (kg)</th>
+                <td class="p-3 border border-sky-200 font-semibold">1</td>
+                <td class="p-3 border border-sky-200 font-semibold bg-sky-200/50">2</td>
+                <td class="p-3 border border-sky-200 font-semibold">3.5</td>
+                <td class="p-3 border border-sky-200 font-semibold">5</td>
+                <td class="p-3 border border-sky-200 font-semibold rounded-tr-xl">?</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white text-sm">
+                <th class="p-3 border border-slate-200 bg-slate-50 font-bold text-slate-700 rounded-bl-xl">Panes (unidades)</th>
+                <td class="p-2 border border-slate-200">
+                  <input type="number" step="any" id="t1-cell-0" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 font-bold text-slate-800" placeholder="?">
+                </td>
+                <td class="p-3 border border-slate-200 font-bold text-sky-700 bg-sky-50/50">10</td>
+                <td class="p-2 border border-slate-200">
+                  <input type="number" step="any" id="t1-cell-2" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 font-bold text-slate-800" placeholder="?">
+                </td>
+                <td class="p-2 border border-slate-200">
+                  <input type="number" step="any" id="t1-cell-3" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 font-bold text-slate-800" placeholder="?">
+                </td>
+                <td class="p-2 border border-slate-200 rounded-br-xl">
+                  <div class="flex flex-col items-center gap-1">
+                    <input type="number" step="any" id="t1-cell-4" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 font-bold text-slate-800" placeholder="Kg?">
+                    <span class="text-[10px] text-slate-400 font-medium">para 40 panes</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="t1-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+      </div>
+
+      <hr class="border-slate-200">
+
+      <!-- Tabla 2: Inversa -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <h4 class="font-bold text-slate-800 flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span>
+            <span>Tabla B: Pintores vs Días de trabajo (Proporcionalidad Inversa)</span>
+          </h4>
+          <span id="k-badge-2" class="text-xs font-mono font-semibold bg-purple-50 text-purple-700 border border-purple-200 px-3 py-1 rounded-full">Constante k = ?</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-center border-collapse min-w-[500px]">
+            <thead>
+              <tr class="bg-purple-100/70 text-purple-900 text-sm">
+                <th class="p-3 border border-purple-200 font-bold rounded-tl-xl">Nº Pintores</th>
+                <td class="p-3 border border-purple-200 font-semibold">1</td>
+                <td class="p-3 border border-purple-200 font-semibold">2</td>
+                <td class="p-3 border border-purple-200 font-semibold bg-purple-200/50">3</td>
+                <td class="p-3 border border-purple-200 font-semibold">?</td>
+                <td class="p-3 border border-purple-200 font-semibold rounded-tr-xl">9</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white text-sm">
+                <th class="p-3 border border-slate-200 bg-slate-50 font-bold text-slate-700 rounded-bl-xl">Tiempo (Días)</th>
+                <td class="p-2 border border-slate-200">
+                  <input type="number" step="any" id="t2-cell-0" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 font-bold text-slate-800" placeholder="?">
+                </td>
+                <td class="p-2 border border-slate-200">
+                  <input type="number" step="any" id="t2-cell-1" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 font-bold text-slate-800" placeholder="?">
+                </td>
+                <td class="p-3 border border-slate-200 font-bold text-purple-700 bg-purple-50/50">12</td>
+                <td class="p-2 border border-slate-200">
+                  <div class="flex flex-col items-center gap-1">
+                    <input type="number" step="any" id="t2-cell-3" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 font-bold text-slate-800" placeholder="Pintores?">
+                    <span class="text-[10px] text-slate-400 font-medium">para 6 días</span>
+                  </div>
+                </td>
+                <td class="p-2 border border-slate-200 rounded-br-xl">
+                  <input type="number" step="any" id="t2-cell-4" class="w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 font-bold text-slate-800" placeholder="?">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="t2-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+      </div>
+
+      <div class="text-right pt-2">
+        <button onclick="checkSection2()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2 ml-auto">
+          <span>Comprobar Sección 2</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Problemas Prácticos con Solución Paso a Paso -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 custom-shadow space-y-8">
+      <div class="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-2">
+        <div>
+          <span class="text-xs font-extrabold text-indigo-600 uppercase tracking-widest">Bloque 3</span>
+          <h3 class="text-2xl font-bold text-slate-900">Problemas Prácticos Aplicados</h3>
+          <p class="text-slate-500 text-sm">Resuelve cada problema indicando el tipo de proporcionalidad y el resultado numérico. Puedes consultar la solución desplegable.</p>
+        </div>
+        <span class="bg-indigo-50 text-indigo-700 font-bold text-xs px-3 py-1.5 rounded-lg border border-indigo-200">10 Puntos</span>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- PROBLEMA 1 -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/40 space-y-4" id="prob-card-1">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <span class="bg-sky-100 text-sky-800 text-xs font-extrabold px-2.5 py-1 rounded-md">Problema 1 · Receta</span>
+              <p class="text-slate-800 font-medium text-sm md:text-base pt-1">
+                Para elaborar un pastel destinado a <strong>6 personas</strong> se necesitan <strong>240 gramos</strong> de azúcar. ¿Cuántos gramos de azúcar se necesitarán para elaborar el mismo pastel para <strong>15 personas</strong>?
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-white p-3 rounded-xl border border-slate-200">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Tipo de Proporcionalidad:</label>
+              <select id="p1-type" class="w-full text-xs font-semibold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                <option value="">-- Seleccionar --</option>
+                <option value="directa">Proporcionalidad Directa</option>
+                <option value="inversa">Proporcionalidad Inversa</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Respuesta (gramos):</label>
+              <input type="number" id="p1-ans" class="w-full text-xs font-bold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Ej. 500">
+            </div>
+            <div class="sm:self-end">
+              <button onclick="checkProblem(1)" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                Comprobar
+              </button>
+            </div>
+          </div>
+
+          <div id="p1-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+
+          <!-- Accordion Solution -->
+          <div>
+            <button onclick="toggleAccordion(1)" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1.5 focus:outline-none">
+              <span id="accordion-btn-1-text">📘 Ver Solución Paso a Paso</span>
+              <svg id="accordion-arrow-1" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="accordion-content-1" class="accordion-content mt-3">
+              <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 text-xs md:text-sm space-y-3">
+                <div class="font-bold text-indigo-900 border-b border-indigo-200 pb-1">Desglose de la Resolución:</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700">
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 1: Identificación de magnitudes</span>
+                    • Magnitud A: Personas (6 y 15)<br>
+                    • Magnitud B: Azúcar en gramos (240 y $x$)
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 2: Tipo de relación</span>
+                    A <strong>más personas</strong>, se requiere <strong>más azúcar</strong> en la misma proporción. Por tanto, es <strong>Directa</strong>.
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 3: Planteamiento</span>
+                    $\frac{6}{240} = \frac{15}{x} \implies x = \frac{15 \cdot 240}{6}$
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 4: Cálculo y Resultado</span>
+                    $15 \cdot 240 = 3600 \quad \rightarrow \quad 3600 / 6 = \mathbf{600}$<br>
+                    <strong>Solución:</strong> Se necesitan <strong>600 gramos</strong> de azúcar.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 2 -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/40 space-y-4" id="prob-card-2">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <span class="bg-purple-100 text-purple-800 text-xs font-extrabold px-2.5 py-1 rounded-md">Problema 2 · Depósito de Agua</span>
+              <p class="text-slate-800 font-medium text-sm md:text-base pt-1">
+                Un depósito de agua tarda <strong>8 horas</strong> en vaciarse utilizando <strong>3 desagües</strong> iguales. ¿Cuántas horas tardará en vaciarse si se utilizan <strong>6 desagües</strong> idénticos?
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-white p-3 rounded-xl border border-slate-200">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Tipo de Proporcionalidad:</label>
+              <select id="p2-type" class="w-full text-xs font-semibold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                <option value="">-- Seleccionar --</option>
+                <option value="directa">Proporcionalidad Directa</option>
+                <option value="inversa">Proporcionalidad Inversa</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Respuesta (horas):</label>
+              <input type="number" id="p2-ans" class="w-full text-xs font-bold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Ej. 4">
+            </div>
+            <div class="sm:self-end">
+              <button onclick="checkProblem(2)" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                Comprobar
+              </button>
+            </div>
+          </div>
+
+          <div id="p2-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+
+          <!-- Accordion Solution -->
+          <div>
+            <button onclick="toggleAccordion(2)" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1.5 focus:outline-none">
+              <span id="accordion-btn-2-text">📘 Ver Solución Paso a Paso</span>
+              <svg id="accordion-arrow-2" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="accordion-content-2" class="accordion-content mt-3">
+              <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 text-xs md:text-sm space-y-3">
+                <div class="font-bold text-indigo-900 border-b border-indigo-200 pb-1">Desglose de la Resolución:</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700">
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 1: Identificación de magnitudes</span>
+                    • Magnitud A: Desagües (3 y 6)<br>
+                    • Magnitud B: Tiempo en horas (8 y $x$)
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 2: Tipo de relación</span>
+                    A <strong>más desagües</strong> abiertos, <strong>menos tiempo</strong> se tarda. Es una relación <strong>Inversa</strong>.
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 3: Planteamiento</span>
+                    $3 \cdot 8 = 6 \cdot x \implies x = \frac{3 \cdot 8}{6}$
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 4: Cálculo y Resultado</span>
+                    $3 \cdot 8 = 24 \quad \rightarrow \quad 24 / 6 = \mathbf{4}$<br>
+                    <strong>Solución:</strong> Tardará <strong>4 horas</strong> en vaciarse.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 3 -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/40 space-y-4" id="prob-card-3">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <span class="bg-purple-100 text-purple-800 text-xs font-extrabold px-2.5 py-1 rounded-md">Problema 3 · Trayecto de Autobús</span>
+              <p class="text-slate-800 font-medium text-sm md:text-base pt-1">
+                Un autobús realiza un viaje en <strong>5 horas</strong> viajando a una velocidad media de <strong>90 km/h</strong>. ¿A qué velocidad media debe circular para completar el mismo trayecto en <strong>3 horas</strong>?
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-white p-3 rounded-xl border border-slate-200">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Tipo de Proporcionalidad:</label>
+              <select id="p3-type" class="w-full text-xs font-semibold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                <option value="">-- Seleccionar --</option>
+                <option value="directa">Proporcionalidad Directa</option>
+                <option value="inversa">Proporcionalidad Inversa</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Respuesta (km/h):</label>
+              <input type="number" id="p3-ans" class="w-full text-xs font-bold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Ej. 120">
+            </div>
+            <div class="sm:self-end">
+              <button onclick="checkProblem(3)" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                Comprobar
+              </button>
+            </div>
+          </div>
+
+          <div id="p3-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+
+          <!-- Accordion Solution -->
+          <div>
+            <button onclick="toggleAccordion(3)" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1.5 focus:outline-none">
+              <span id="accordion-btn-3-text">📘 Ver Solución Paso a Paso</span>
+              <svg id="accordion-arrow-3" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="accordion-content-3" class="accordion-content mt-3">
+              <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 text-xs md:text-sm space-y-3">
+                <div class="font-bold text-indigo-900 border-b border-indigo-200 pb-1">Desglose de la Resolución:</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700">
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 1: Identificación de magnitudes</span>
+                    • Magnitud A: Tiempo en horas (5 y 3)<br>
+                    • Magnitud B: Velocidad media en km/h (90 y $x$)
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 2: Tipo de relación</span>
+                    Para tardar <strong>menos horas</strong>, la velocidad debe ser <strong>mayor</strong>. Es una relación <strong>Inversa</strong>.
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 3: Planteamiento</span>
+                    $5 \cdot 90 = 3 \cdot x \implies x = \frac{5 \cdot 90}{3}$
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 4: Cálculo y Resultado</span>
+                    $5 \cdot 90 = 450 \quad \rightarrow \quad 450 / 3 = \mathbf{150}$<br>
+                    <strong>Solución:</strong> Deberá circular a <strong>150 km/h</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 4 -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/40 space-y-4" id="prob-card-4">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <span class="bg-sky-100 text-sky-800 text-xs font-extrabold px-2.5 py-1 rounded-md">Problema 4 · Material Escolar</span>
+              <p class="text-slate-800 font-medium text-sm md:text-base pt-1">
+                En la papelería del instituto, <strong>8 cuadernos</strong> iguales han costado <strong>18,40 €</strong>. ¿Cuánto costarán <strong>14 cuadernos</strong> de la misma marca y calidad?
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-white p-3 rounded-xl border border-slate-200">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Tipo de Proporcionalidad:</label>
+              <select id="p4-type" class="w-full text-xs font-semibold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                <option value="">-- Seleccionar --</option>
+                <option value="directa">Proporcionalidad Directa</option>
+                <option value="inversa">Proporcionalidad Inversa</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Respuesta (€):</label>
+              <input type="number" step="0.01" id="p4-ans" class="w-full text-xs font-bold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Ej. 32.20">
+            </div>
+            <div class="sm:self-end">
+              <button onclick="checkProblem(4)" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                Comprobar
+              </button>
+            </div>
+          </div>
+
+          <div id="p4-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+
+          <!-- Accordion Solution -->
+          <div>
+            <button onclick="toggleAccordion(4)" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1.5 focus:outline-none">
+              <span id="accordion-btn-4-text">📘 Ver Solución Paso a Paso</span>
+              <svg id="accordion-arrow-4" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="accordion-content-4" class="accordion-content mt-3">
+              <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 text-xs md:text-sm space-y-3">
+                <div class="font-bold text-indigo-900 border-b border-indigo-200 pb-1">Desglose de la Resolución:</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700">
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 1: Identificación de magnitudes</span>
+                    • Magnitud A: Nº de cuadernos (8 y 14)<br>
+                    • Magnitud B: Precio en euros (18,40 y $x$)
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 2: Tipo de relación</span>
+                    A <strong>más cuadernos</strong> comprados, el precio total es <strong>mayor</strong>. Es una relación <strong>Directa</strong>.
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 3: Planteamiento</span>
+                    $\frac{8}{18,40} = \frac{14}{x} \implies x = \frac{14 \cdot 18,40}{8}$
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 4: Cálculo y Resultado</span>
+                    $14 \cdot 18,40 = 257,60 \quad \rightarrow \quad 257,60 / 8 = \mathbf{32,20}$<br>
+                    <strong>Solución:</strong> Costarán <strong>32,20 €</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROBLEMA 5 -->
+        <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/40 space-y-4" id="prob-card-5">
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-1">
+              <span class="bg-purple-100 text-purple-800 text-xs font-extrabold px-2.5 py-1 rounded-md">Problema 5 · Alimento para Animales</span>
+              <p class="text-slate-800 font-medium text-sm md:text-base pt-1">
+                Un ganadero tiene suficiente pienso para alimentar a <strong>20 vacas</strong> durante <strong>30 días</strong>. Si vende 5 vacas y le quedan <strong>15 vacas</strong>, ¿cuántos días le durará la misma reserva de pienso?
+              </p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-white p-3 rounded-xl border border-slate-200">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Tipo de Proporcionalidad:</label>
+              <select id="p5-type" class="w-full text-xs font-semibold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
+                <option value="">-- Seleccionar --</option>
+                <option value="directa">Proporcionalidad Directa</option>
+                <option value="inversa">Proporcionalidad Inversa</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 mb-1">Respuesta (días):</label>
+              <input type="number" id="p5-ans" class="w-full text-xs font-bold p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Ej. 40">
+            </div>
+            <div class="sm:self-end">
+              <button onclick="checkProblem(5)" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                Comprobar
+              </button>
+            </div>
+          </div>
+
+          <div id="p5-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+
+          <!-- Accordion Solution -->
+          <div>
+            <button onclick="toggleAccordion(5)" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1.5 focus:outline-none">
+              <span id="accordion-btn-5-text">📘 Ver Solución Paso a Paso</span>
+              <svg id="accordion-arrow-5" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="accordion-content-5" class="accordion-content mt-3">
+              <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 text-xs md:text-sm space-y-3">
+                <div class="font-bold text-indigo-900 border-b border-indigo-200 pb-1">Desglose de la Resolución:</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700">
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 1: Identificación de magnitudes</span>
+                    • Magnitud A: Nº de vacas (20 y 15)<br>
+                    • Magnitud B: Días de alimento (30 y $x$)
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 2: Tipo de relación</span>
+                    A <strong>menos vacas</strong> comiendo, la misma comida alcanzará para <strong>más días</strong>. Es una relación <strong>Inversa</strong>.
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 3: Planteamiento</span>
+                    $20 \cdot 30 = 15 \cdot x \implies x = \frac{20 \cdot 30}{15}$
+                  </div>
+                  <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                    <span class="font-bold text-indigo-700 block mb-1">Paso 4: Cálculo y Resultado</span>
+                    $20 \cdot 30 = 600 \quad \rightarrow \quad 600 / 15 = \mathbf{40}$<br>
+                    <strong>Solución:</strong> El pienso durará <strong>40 días</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-right pt-2">
+        <button onclick="checkSection3()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-2 ml-auto">
+          <span>Comprobar Sección 3</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- GLOBAL ACTIONS & PERFORMANCE SUMMARY -->
+    <section class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 md:p-10 custom-shadow space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <span class="bg-indigo-500/30 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full border border-indigo-400/30">Resumen General</span>
+          <h3 class="text-2xl md:text-3xl font-extrabold">¿Listo para revisar tus respuestas?</h3>
+          <p class="text-slate-300 text-sm max-w-xl">
+            Haz clic en "Comprobar Toda la Ficha" para evaluar todas las secciones de una sola vez y obtener tu nota global con feedback.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <button onclick="checkAll()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-sm px-6 py-3.5 rounded-xl shadow-lg transition transform active:scale-95 text-center">
+            Comprobar Toda la Ficha
+          </button>
+          <button onclick="resetWorksheet()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm px-5 py-3.5 rounded-xl border border-slate-700 transition text-center">
+            Reiniciar Ficha
+          </button>
+        </div>
+      </div>
+
+      <!-- Feedback Result Card -->
+      <div id="final-summary-card" class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 space-y-4">
+        <div class="flex items-center space-x-4">
+          <div id="final-badge-icon" class="w-14 h-14 rounded-2xl bg-emerald-500 text-white font-black text-2xl flex items-center justify-center shadow-lg">
+            ✓
+          </div>
+          <div>
+            <h4 id="final-status-title" class="text-xl font-extrabold">¡Buen trabajo!</h4>
+            <p id="final-status-desc" class="text-slate-300 text-sm">Has alcanzado el 85% de los puntos totales.</p>
+          </div>
+        </div>
+        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-700">
+          <div id="final-progress-bar" class="bg-gradient-to-r from-indigo-500 to-emerald-400 h-3 rounded-full transition-all duration-700" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // State management
+    const state = {
+      section1: {
+        answers: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null },
+        correct: { 1: 'inversa', 2: 'directa', 3: 'inversa', 4: 'no', 5: 'directa', 6: 'inversa' },
+        explanations: {
+          1: 'A más obreros trabajando al mismo ritmo, menos días tardan. (Inversa)',
+          2: 'A más kg de patatas, mayor es el importe total a pagar. (Directa)',
+          3: 'A mayor velocidad constante, menor es el tiempo del viaje. (Inversa)',
+          4: 'La estatura no crece proporcionalmente con la edad. (No Proporcional)',
+          5: 'A más fotocopias impresas, mayor es el importe cobrado. (Directa)',
+          6: 'A más grifos abiertos, menos tiempo tarda en llenarse. (Inversa)'
+        }
+      },
+      section2: {
+        table1: {
+          // cells: 0, 2, 3, 4
+          correct: { 0: 5, 2: 17.5, 3: 25, 4: 8 },
+          k: 5
+        },
+        table2: {
+          // cells: 0, 1, 3, 4
+          correct: { 0: 36, 1: 18, 3: 6, 4: 4 },
+          k: 36
+        }
+      },
+      section3: {
+        problems: {
+          1: { type: 'directa', ans: 600, unit: 'g' },
+          2: { type: 'inversa', ans: 4, unit: 'horas' },
+          3: { type: 'inversa', ans: 150, unit: 'km/h' },
+          4: { type: 'directa', ans: 32.20, unit: '€' },
+          5: { type: 'inversa', ans: 40, unit: 'días' }
+        }
+      }
+    };
+
+    // Helper: Select option for section 1
+    function selectOption(qNum, value) {
+      state.section1.answers[qNum] = value;
+      const btns = document.querySelectorAll(`.opt-btn-${qNum}`);
+      btns.forEach(btn => {
+        if (btn.getAttribute('data-val') === value) {
+          btn.classList.remove('bg-white', 'text-slate-800', 'border-slate-300');
+          btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-sm');
+        } else {
+          btn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-sm');
+          btn.classList.add('bg-white', 'text-slate-800', 'border-slate-300');
+        }
+      });
+      updateLiveScore();
+    }
+
+    function checkSection1() {
+      let pts = 0;
+      for (let i = 1; i <= 6; i++) {
+        const userAns = state.section1.answers[i];
+        const correctAns = state.section1.correct[i];
+        const feedbackDiv = document.getElementById(`feedback-q${i}`);
+        
+        feedbackDiv.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'bg-amber-100', 'text-amber-800');
+
+        if (!userAns) {
+          feedbackDiv.classList.add('bg-amber-100', 'text-amber-800');
+          feedbackDiv.innerHTML = `⚠️ Sin responder. ${state.section1.explanations[i]}`;
+        } else if (userAns === correctAns) {
+          pts++;
+          feedbackDiv.classList.add('bg-emerald-100', 'text-emerald-800');
+          feedbackDiv.innerHTML = `✓ ¡Correcto! ${state.section1.explanations[i]}`;
+        } else {
+          feedbackDiv.classList.add('bg-rose-100', 'text-rose-800');
+          feedbackDiv.innerHTML = `✗ Incorrecto. ${state.section1.explanations[i]}`;
+        }
+      }
+      updateLiveScore();
+      return pts;
+    }
+
+    function checkSection2() {
+      let pts = 0;
+
+      // Table 1
+      let t1Ok = true;
+      const t1Cells = [0, 2, 3, 4];
+      t1Cells.forEach(cellIdx => {
+        const input = document.getElementById(`t1-cell-${cellIdx}`);
+        const val = parseFloat(input.value);
+        const target = state.section2.table1.correct[cellIdx];
+        if (!isNaN(val) && Math.abs(val - target) < 0.01) {
+          pts++;
+          input.classList.remove('border-slate-300', 'border-rose-500', 'bg-rose-50');
+          input.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+        } else {
+          t1Ok = false;
+          input.classList.remove('border-slate-300', 'border-emerald-500', 'bg-emerald-50');
+          input.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+        }
+      });
+
+      const t1Fb = document.getElementById('t1-feedback');
+      t1Fb.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+      if (t1Ok) {
+        t1Fb.classList.add('bg-emerald-100', 'text-emerald-800');
+        t1Fb.innerHTML = `✓ ¡Tabla A completa correctamente! La constante de proporcionalidad directa es <strong>k = 5</strong> (10/2 = 5).`;
+      } else {
+        t1Fb.classList.add('bg-rose-100', 'text-rose-800');
+        t1Fb.innerHTML = `✗ Revisa las casillas en rojo. Recuerda que para la directa: Panes = 5 · Harina.`;
+      }
+      document.getElementById('k-badge-1').textContent = `Constante k = ${state.section2.table1.k}`;
+
+      // Table 2
+      let t2Ok = true;
+      const t2Cells = [0, 1, 3, 4];
+      t2Cells.forEach(cellIdx => {
+        const input = document.getElementById(`t2-cell-${cellIdx}`);
+        const val = parseFloat(input.value);
+        const target = state.section2.table2.correct[cellIdx];
+        if (!isNaN(val) && Math.abs(val - target) < 0.01) {
+          pts++;
+          input.classList.remove('border-slate-300', 'border-rose-500', 'bg-rose-50');
+          input.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+        } else {
+          t2Ok = false;
+          input.classList.remove('border-slate-300', 'border-emerald-500', 'bg-emerald-50');
+          input.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+        }
+      });
+
+      const t2Fb = document.getElementById('t2-feedback');
+      t2Fb.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+      if (t2Ok) {
+        t2Fb.classList.add('bg-emerald-100', 'text-emerald-800');
+        t2Fb.innerHTML = `✓ ¡Tabla B completa correctamente! La constante de proporcionalidad inversa es <strong>k = 36</strong> (3 · 12 = 36).`;
+      } else {
+        t2Fb.classList.add('bg-rose-100', 'text-rose-800');
+        t2Fb.innerHTML = `✗ Revisa las casillas en rojo. Recuerda que para la inversa: Pintores · Días = 36.`;
+      }
+      document.getElementById('k-badge-2').textContent = `Constante k = ${state.section2.table2.k}`;
+
+      updateLiveScore();
+      return pts;
+    }
+
+    function checkProblem(probNum) {
+      let pts = 0;
+      const probData = state.section3.problems[probNum];
+      const selectedType = document.getElementById(`p${probNum}-type`).value;
+      const userAnsVal = parseFloat(document.getElementById(`p${probNum}-ans`).value);
+      const fbDiv = document.getElementById(`p${probNum}-feedback`);
+
+      fbDiv.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'bg-amber-100', 'text-amber-800');
+
+      const isTypeCorrect = selectedType === probData.type;
+      const isAnsCorrect = !isNaN(userAnsVal) && Math.abs(userAnsVal - probData.ans) < 0.1;
+
+      if (isTypeCorrect) pts += 1;
+      if (isAnsCorrect) pts += 1;
+
+      if (isTypeCorrect && isAnsCorrect) {
+        fbDiv.classList.add('bg-emerald-100', 'text-emerald-800');
+        fbDiv.innerHTML = `✓ ¡Excelente! Tipo de proporcionalidad y resultado (${probData.ans} ${probData.unit}) correctos.`;
+      } else if (!selectedType && isNaN(userAnsVal)) {
+        fbDiv.classList.add('bg-amber-100', 'text-amber-800');
+        fbDiv.innerHTML = `⚠️ Por favor, selecciona el tipo e introduce una respuesta numérica.`;
+      } else {
+        fbDiv.classList.add('bg-rose-100', 'text-rose-800');
+        let details = [];
+        if (!isTypeCorrect) details.push(`El tipo es <strong>${probData.type.toUpperCase()}</strong>`);
+        if (!isAnsCorrect) details.push(`el resultado es <strong>${probData.ans} ${probData.unit}</strong>`);
+        fbDiv.innerHTML = `✗ Revisa tus respuestas: ${details.join(' y ')}. Abre la solución desplegable para ver el procedimiento.`;
+      }
+
+      updateLiveScore();
+      return pts;
+    }
+
+    function checkSection3() {
+      let pts = 0;
+      for (let i = 1; i <= 5; i++) {
+        pts += checkProblem(i);
+      }
+      return pts;
+    }
+
+    function toggleAccordion(id) {
+      const content = document.getElementById(`accordion-content-${id}`);
+      const btnText = document.getElementById(`accordion-btn-${id}-text`);
+      const arrow = document.getElementById(`accordion-arrow-${id}`);
+
+      if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        btnText.textContent = '📘 Ver Solución Paso a Paso';
+        arrow.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('open');
+        btnText.textContent = '📖 Ocultar Solución Paso a Paso';
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    function calculateTotalScore() {
+      let totalPts = 0;
+
+      // Section 1 (6 pts)
+      for (let i = 1; i <= 6; i++) {
+        if (state.section1.answers[i] === state.section1.correct[i]) {
+          totalPts += 1;
+        }
+      }
+
+      // Section 2 (8 pts)
+      [0, 2, 3, 4].forEach(cellIdx => {
+        const val = parseFloat(document.getElementById(`t1-cell-${cellIdx}`).value);
+        if (!isNaN(val) && Math.abs(val - state.section2.table1.correct[cellIdx]) < 0.01) totalPts += 1;
+      });
+
+      [0, 1, 3, 4].forEach(cellIdx => {
+        const val = parseFloat(document.getElementById(`t2-cell-${cellIdx}`).value);
+        if (!isNaN(val) && Math.abs(val - state.section2.table2.correct[cellIdx]) < 0.01) totalPts += 1;
+      });
+
+      // Section 3 (10 pts)
+      for (let i = 1; i <= 5; i++) {
+        const probData = state.section3.problems[i];
+        const selectedType = document.getElementById(`p${i}-type`).value;
+        const userAnsVal = parseFloat(document.getElementById(`p${i}-ans`).value);
+
+        if (selectedType === probData.type) totalPts += 1;
+        if (!isNaN(userAnsVal) && Math.abs(userAnsVal - probData.ans) < 0.1) totalPts += 1;
+      }
+
+      return totalPts;
+    }
+
+    function updateLiveScore() {
+      const score = calculateTotalScore();
+      const maxPts = 24;
+      const pct = Math.round((score / maxPts) * 100);
+
+      document.getElementById('live-score-text').textContent = `${score} / ${maxPts} pts (${pct}%)`;
+      document.getElementById('score-circle').textContent = `${pct}%`;
+    }
+
+    function checkAll() {
+      checkSection1();
+      checkSection2();
+      checkSection3();
+
+      const score = calculateTotalScore();
+      const maxPts = 24;
+      const pct = Math.round((score / maxPts) * 100);
+
+      const summaryCard = document.getElementById('final-summary-card');
+      const statusTitle = document.getElementById('final-status-title');
+      const statusDesc = document.getElementById('final-status-desc');
+      const progressBar = document.getElementById('final-progress-bar');
+      const badgeIcon = document.getElementById('final-badge-icon');
+
+      summaryCard.classList.remove('hidden');
+
+      progressBar.style.width = `${pct}%`;
+
+      if (pct === 100) {
+        badgeIcon.className = 'w-14 h-14 rounded-2xl bg-emerald-500 text-white font-black text-2xl flex items-center justify-center shadow-lg';
+        badgeIcon.textContent = '🏆';
+        statusTitle.textContent = '¡Puntuación Perfecta! 100%';
+        statusDesc.textContent = '¡Enhorabuena! Dominas perfectamente la proporcionalidad directa e inversa.';
+      } else if (pct >= 70) {
+        badgeIcon.className = 'w-14 h-14 rounded-2xl bg-indigo-500 text-white font-black text-2xl flex items-center justify-center shadow-lg';
+        badgeIcon.textContent = '🌟';
+        statusTitle.textContent = `¡Muy buen trabajo! (${score} / ${maxPts} pts - ${pct}%)`;
+        statusDesc.textContent = 'Has demostrado una gran comprensión. Revisa las soluciones desplegables para corregir los pequeños detalles.';
+      } else if (pct >= 40) {
+        badgeIcon.className = 'w-14 h-14 rounded-2xl bg-amber-500 text-white font-black text-2xl flex items-center justify-center shadow-lg';
+        badgeIcon.textContent = '📈';
+        statusTitle.textContent = `¡Buen intento! (${score} / ${maxPts} pts - ${pct}%)`;
+        statusDesc.textContent = 'Estás en buen camino. Repasa las reglas de tres directa e inversa y vuelve a intentarlo.';
+      } else {
+        badgeIcon.className = 'w-14 h-14 rounded-2xl bg-rose-500 text-white font-black text-2xl flex items-center justify-center shadow-lg';
+        badgeIcon.textContent = '💪';
+        statusTitle.textContent = `Sigue practicando (${score} / ${maxPts} pts - ${pct}%)`;
+        statusDesc.textContent = 'Consulta los cuadros teóricos del principio de la ficha y revisa paso a paso las soluciones.';
+      }
+
+      summaryCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetWorksheet() {
+      // Reset Section 1
+      for (let i = 1; i <= 6; i++) {
+        state.section1.answers[i] = null;
+        const btns = document.querySelectorAll(`.opt-btn-${i}`);
+        btns.forEach(btn => {
+          btn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-sm');
+          btn.classList.add('bg-white', 'text-slate-800', 'border-slate-300');
+        });
+        const fb = document.getElementById(`feedback-q${i}`);
+        fb.classList.add('hidden');
+      }
+
+      // Reset Section 2
+      [0, 2, 3, 4].forEach(idx => {
+        const el = document.getElementById(`t1-cell-${idx}`);
+        el.value = '';
+        el.className = 'w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 font-bold text-slate-800';
+      });
+      document.getElementById('t1-feedback').classList.add('hidden');
+      document.getElementById('k-badge-1').textContent = 'Constante k = ?';
+
+      [0, 1, 3, 4].forEach(idx => {
+        const el = document.getElementById(`t2-cell-${idx}`);
+        el.value = '';
+        el.className = 'w-20 text-center py-1.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 font-bold text-slate-800';
+      });
+      document.getElementById('t2-feedback').classList.add('hidden');
+      document.getElementById('k-badge-2').textContent = 'Constante k = ?';
+
+      // Reset Section 3
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`p${i}-type`).value = '';
+        document.getElementById(`p${i}-ans`).value = '';
+        document.getElementById(`p${i}-feedback`).classList.add('hidden');
+
+        // Close accordions if open
+        const content = document.getElementById(`accordion-content-${i}`);
+        if (content.classList.contains('open')) {
+          toggleAccordion(i);
+        }
+      }
+
+      // Hide summary card
+      document.getElementById('final-summary-card').classList.add('hidden');
+
+      updateLiveScore();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
